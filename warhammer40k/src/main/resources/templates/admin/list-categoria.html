@@ -58,27 +58,12 @@ body {
 
 		</div>
 	</nav>
-	<!------------------------------------------------------------->
-<form class="form-inline" style="  text-align: center;
-" th:action="@{/}">
-	<div class="form-group mb-2 ">
-		<label>Filtar</label>
-	</div>
-	<div class="form-group mx-sm3 mb-2">
-		<input type="text" name="palabraClave" class="form-conrol" id="palabraClave" th:vale="${palabraClave}" placeholder="Valor a buscar" requerid >
-	</div>
-	<input type="submit" class="btn btn-secondary mb-2" value="Limpiar">
-</form>
-</br>
-<!-- --------------------------------------- -->
-
-
-
 	<div class="container">
 		<div class="row">
 			<div class="col-md-offset-2 col-md-8">				
 				<div class="pull-right">
 					<a href="form-categoria.html" 
+						th:href="@{/admin/categoria/nueva}" 
 						class="btn btn-primary">Nueva categoría</a>
 
 				</div>

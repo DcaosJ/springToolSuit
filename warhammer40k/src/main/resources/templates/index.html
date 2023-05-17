@@ -35,7 +35,18 @@
 				</button>
 				<a class="navbar-brand" href="/">Openwebinars.net Shop</a>
 			</div>
-			
+				<!------------------------------------------------------------->
+			<form class="form-inline" th:action="@{/buscar}">
+			<div class="form-group mb-2 ">
+				<label>Filtar</label>
+			</div>
+			<div class="form-group mx-sm3 mb-2">
+				<input type="text" name="palabraClave" class="form-conrol" id="palabraClave" th:vale="${palabraClave}" placeholder="Valor a buscar" requerid >
+			</div>
+			<input type="submit" class="btn btn-primary mb-2" value="Buscar">
+			<input type="submit" class="btn btn-secondary mb-2" value="Limpiar">
+			</form>
+<!------------------------------------------------------------->		
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -80,16 +91,8 @@
 										<div class="price col-md-12">
 											<h5 th:text="${#strings.abbreviate(producto.nombre,65)}">Nombre</h5>
 											<div class="price-text-color">
-												<span
-													th:text="${producto.descuento == 0} 
-																? ${#numbers.formatCurrency(producto.precio)} 
-																: ${#numbers.formatCurrency(producto.precio * (1 - producto.descuento))}">10</span>
-	
-												<th:block th:if="${producto.descuento > 0}">
-													<span class="price-original"
+												<th:block
 														th:text="${#numbers.formatCurrency(producto.precio)}">12,00€</span>
-													<span class="label label-danger"
-														th:text=${#numbers.formatPercent(producto.descuento,1,0)}>1%</span>
 												</th:block>
 											</div>
 										</div>

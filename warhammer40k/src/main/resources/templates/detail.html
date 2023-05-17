@@ -66,17 +66,7 @@
 				<div class="product-price">
 					<div class="row">
 						<div class=col-md-4>
-							<span class="pvp"
-								th:text="${producto.descuento == 0} ? ${#numbers.formatCurrency(producto.precio)} : ${#numbers.formatCurrency(producto.precio * (1 - producto.descuento))}">100€</span>
-						</div>
-						<th:block th:if="${producto.descuento > 0}">
-							<div class="col-md-3 pvp-no-discounted">
-								<span th:text="${#numbers.formatCurrency(producto.pvp)}">120€</span>
-							</div>
-							<div class="col-md-3 discount">
-								<span class="label-discount">Descuento </span> <span
-									class="label label-danger"
-									th:text=${#numbers.formatPercent(producto.descuento,1,0)}>12%</span>
+								<span th:text="${#numbers.formatCurrency(producto.precio)}">120€</span>
 							</div>
 						</th:block>
 					</div>
