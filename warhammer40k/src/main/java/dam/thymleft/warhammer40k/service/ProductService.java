@@ -60,6 +60,25 @@ public class ProductService {
 		return repositorio.findAllById(listaIds);
 
 	}
+
+	public List<Producto> listAll(String palabraClave){
+		float precio = -1;
+		String nombreProducto="";
+		try {
+		
+			precio = Float.parseFloat(palabraClave.toString());
+		}catch(NumberFormatException e) {
+			nombreProducto = palabraClave.toString();
+		}
+		
+		if(precio>-1) {
+				return repositorio.findAll(precio);
+		}	
+		else {
+			return repositorio.findAll(nombreProducto);
+		}
+	}
+	
 }
 
 

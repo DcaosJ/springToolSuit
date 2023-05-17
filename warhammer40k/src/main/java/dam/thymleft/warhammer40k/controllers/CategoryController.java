@@ -1,6 +1,7 @@
 package dam.thymleft.warhammer40k.controllers;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import dam.thymleft.warhammer40k.model.Categoria;
+import dam.thymleft.warhammer40k.model.Producto;
 import dam.thymleft.warhammer40k.service.CategoryService;
 import dam.thymleft.warhammer40k.service.ProductService;
 

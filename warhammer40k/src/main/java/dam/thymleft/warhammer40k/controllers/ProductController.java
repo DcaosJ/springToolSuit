@@ -3,10 +3,10 @@ package dam.thymleft.warhammer40k.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import dam.thymleft.warhammer40k.model.Producto;
@@ -42,13 +42,17 @@ public class ProductController {
 		model.addAttribute("categorias" ,categorias);
 		
 		return "admin/form-producto";
-		
-		
 	}
 	
-	@PostMapping("/nuevo/submit")
-	public String submitNuevoProducto(Producto producto, Model model) {
-		productService.save(producto);
-		return "redirect:admin/producto";
+	@GetMapping("/buscar")
+	public String buscar(Model model, @Param("palabraClave") String palabraClave) {
+		List<Producto> listaProducto = productService.listAll(palabraClave);
+		model.addAttribute("productos", listaProducto);
+		model.addAttribute("categorias", categoryService.findAll());
+		model.addAttribute("palabraClave", palabraClave);
+		return "index";
 	}
+	
+
+	
 }

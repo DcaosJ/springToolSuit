@@ -23,4 +23,12 @@ public interface ProductRepository extends JpaRepository<Producto, Long> {
 	@Query("select count(p) from Producto p where p.categoria = ?1")
 	public int findNumProductosByCategoria(Categoria categoria);
 		
+	
+	@Query("select p from Producto p where p.nombre like %?1%")
+	public List<Producto> findAll(String nombreProducto);
+	
+	@Query("select p from Producto p where p.precio<=?1")
+	public List<Producto> findAll(float precio);
+
+	
 }
