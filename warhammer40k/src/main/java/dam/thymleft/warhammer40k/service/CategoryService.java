@@ -21,8 +21,6 @@ public class CategoryService {
 		return repositorio.findAll();
 	}	
 	
-	
-	
 	public Categoria save(Categoria categoria) {
 		return repositorio.save(categoria);
 	}

@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import dam.thymleft.warhammer40k.model.Producto;
@@ -44,15 +45,25 @@ public class ProductController {
 		return "admin/form-producto";
 	}
 	
-	@GetMapping("/buscar")
+	@GetMapping("/buscarControlador")
 	public String buscar(Model model, @Param("palabraClave") String palabraClave) {
 		List<Producto> listaProducto = productService.listAll(palabraClave);
 		model.addAttribute("productos", listaProducto);
 		model.addAttribute("categorias", categoryService.findAll());
 		model.addAttribute("palabraClave", palabraClave);
-		return "index";
+		return "../templates.admin/list-producto.html";
 	}
 	
-
+	@GetMapping("/borrar/{id}")
+	public String borrarProducto(@PathVariable("id") Long id, Model model) {
+		
+		Producto producto = productService.findById(id);
+		
+		if (producto != null) {
+			
+				productService.delete(producto);
+			}
+		return "redirect:/admin/categoria/?error=true";
+		} 
 	
 }

@@ -24,7 +24,8 @@
 <body>
 
 	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="col-md-3">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
@@ -33,19 +34,23 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/">Openwebinars.net Shop</a>
+				<a class="navbar-brand" href="/">Ecija HOBBY</a>
 			</div>
 				<!------------------------------------------------------------->
+		</div>
+		<div class="col-md-6">
 			<form class="form-inline" th:action="@{/buscar}">
-			<div class="form-group mb-2 ">
-				<label>Filtar</label>
-			</div>
-			<div class="form-group mx-sm3 mb-2">
-				<input type="text" name="palabraClave" class="form-conrol" id="palabraClave" th:vale="${palabraClave}" placeholder="Valor a buscar" requerid >
-			</div>
-			<input type="submit" class="btn btn-primary mb-2" value="Buscar">
-			<input type="submit" class="btn btn-secondary mb-2" value="Limpiar">
+	    	<div class="form-group mb-2">
+	    	</div>
+	    	<div class="form-group mx-sm-3 mb-2">
+	        	<input type="text" name="palabraClave" class="form-control" id="palabraClave" th:value="${palabraClave}" placeholder="Buscador: Nombre o Precio" required>
+	    	</div>
+	    		<input type="submit" class="btn btn-primary mb-2" value="Buscar">
+	    	
+	    		<input type="button" class="btn btn-secondary mb-2" value="Limpiar" th:onclick="window.location.href = '/'" >
 			</form>
+		</div>
+		<div class="col-md-3">
 <!------------------------------------------------------------->		
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
@@ -61,6 +66,7 @@
 				</ul>				
 			</div>
 		</div>
+	</div>
 	</nav>
 
 	<div class="container-fluid">
@@ -76,7 +82,8 @@
 			</div>
 
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<h1>Openwebinars.net Shop</h1>
+				<h1 th:if="${palabraClave}">Resultados de búsqueda por: <span th:text="${palabraClave}"></span></h1>
+    			<h1 th:unless="${palabraClave}">Productos</h1>
 				<div class="row">
 					<div class="col-sm-3" th:each="producto : ${productos}">
 						<a href="#" th:href="@{/producto/{id}(id=${producto.id})}">
@@ -118,7 +125,7 @@
 		</div>
 
 	</div>
-
+	
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

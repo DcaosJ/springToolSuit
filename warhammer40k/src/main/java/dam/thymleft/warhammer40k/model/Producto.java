@@ -32,9 +32,6 @@ public class Producto {
 	
 	private String imagen;
 
-	
-	
-	
 	@ManyToOne
 	private Categoria categoria;
 	
@@ -125,8 +122,7 @@ public class Producto {
 		this.puntuaciones.add(puntuacion);
 		puntuacion.setProducto(this);
 	}
-	
-	
+		
 	public double getPuntuacionMedia() {
 		if (this.puntuaciones.isEmpty())
 			return 0;
@@ -139,9 +135,6 @@ public class Producto {
 	
 	public double getNumeroTotalPuntuaciones() {
 		return this.puntuaciones.size();
-	}
-	
-	
-	
+	}	
 }	
 	

@@ -3,8 +3,13 @@ drop table producto if exists;
 drop table categoria if exists;
 drop sequence if exists hibernate_sequence;
 
-
+drop table popularidad if exists;
+drop table producto if exists;
+drop table categoria if exists;
+drop sequence if exists hibernate_sequence;
 create sequence hibernate_sequence start with 100 increment by 1;
+
+
 
 CREATE TABLE categoria (
   id bigint AUTO_INCREMENT PRIMARY KEY,

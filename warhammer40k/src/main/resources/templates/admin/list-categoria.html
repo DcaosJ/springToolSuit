@@ -29,8 +29,10 @@ body {
 </head>
 <body>
 
+	
 	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="col-md-3">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
@@ -41,22 +43,44 @@ body {
 				</button>
 				<a class="navbar-brand" href="/">Openwebinars.net Shop</a>
 			</div>
+				<!------------------------------------------------------------->
+		</div>
+		<div class="col-md-6">
+			<form class="form-inline" th:action="@{/buscarControladorC}">
+	    	<div class="form-group mb-2">
+	    	</div>
+	    	<div class="form-group mx-sm-3 mb-2">
+	        	<input type="text" name="palabraClave" class="form-control" id="palabraClave" th:value="${palabraClave}" placeholder="por Nombre o precio" required>
+	    	</div>
+	    		<input type="submit" class="btn btn-primary mb-2" value="Buscar">
+	    	
+	    		<input type="button" class="btn btn-secondary mb-2" value="Limpiar" th:onclick="window.location.href = '/admin/producto/'" >
+			</form>
+	
+			<div th:if="${palabraClave}">
+	    		<p>
+	        		<span th:text="${palabraClave}"></span>
+	        		<span th:if="${palabraClave == 'nombre'}"> (Buscado por nombre)</span>
+	    		</p>
+			</div>
+		</div>
+		<div class="col-md-3">
+<!------------------------------------------------------------->		
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">Opciones <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="/admin/categoria/"
+							<li><a href="admin/list-categoria.html"
 								th:href="@{/admin/categoria/}">Gestión de categorías</a></li>
-							<li><a href="/admin/producto/" th:href="@{/admin/producto/}">Gestión
-									de productos</a></li>
+							<li><a href="admin/list-producto.html"
+								th:href="@{/admin/producto/}">Gestión de productos</a></li>
 						</ul></li>
-				</ul>
-				
+				</ul>				
 			</div>
-
 		</div>
+	</div>
 	</nav>
 	<div class="container">
 		<div class="row">
